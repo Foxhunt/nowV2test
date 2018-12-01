@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>nowV2test</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+</head>
+<body>
+    nowV2test
+</body>
+<script>
+    const socket = io()
+
+    const body = document.getElementsByTagName("body")[0]
+    let lastDiv = null
+
+    socket.on("message", ({random, NOW_URL}) => {
+
+        console.log(`time: ${new Date().toLocaleTimeString()} ping: ${random} NOW_URL: ${NOW_URL}`)
+
+        if(!(lastDiv && lastDiv.random === random)){
+            const div = document.createElement("div")
+            div.random = random
+            div.innerText = `time: ${new Date().toLocaleTimeString()} ping: ${random} NOW_URL: ${NOW_URL}`
+            lastDiv = div
+            body.appendChild(div)
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,14 @@
+{
+    "name": "nowV2test",
+    "alias": "nowV2test",
+    "version": 2,
+    "regions": ["all"],
+    "builds": [
+        { "src": "front/*", "use": "@now/static" },
+        { "src": "back/*", "use": "@now/node-server" }
+    ],
+    "routes": [
+        { "src": "/", "dest": "/front" },
+        { "src": "/socket.io", "dest": "back/server.js" }
+    ]
+}
