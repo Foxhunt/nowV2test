@@ -5,12 +5,8 @@ const random = Math.random()
 const NOW_URL = process.env.NOW_URL
 
 io.on("connect", socket => {
-    const intervall = setInterval(() => {
-        socket.send({random, NOW_URL})
-    }, 1000)
-
-    socket.on("disconnect", () => {
-        clearInterval(intervall)
+    socket.on("message", fn => {
+        fn({random, NOW_URL})
     })
 })
 
