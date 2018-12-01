@@ -3,6 +3,7 @@
     "alias": "nowV2test",
     "version": 2,
     "regions": ["all"],
+    "public": true,
     "builds": [
         { "src": "front/*", "use": "@now/static" },
         { "src": "back/*", "use": "@now/node-server" }
