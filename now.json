@@ -6,7 +6,8 @@
     "public": true,
     "builds": [
         { "src": "front/*", "use": "@now/static" },
-        { "src": "back/*", "use": "@now/node-server" }
+        { "src": "back/*", "use": "@now/node-server" },
+        { "src": "api/*", "use": "@now/node" }
     ],
     "routes": [
         { "src": "/", "dest": "/front" },
