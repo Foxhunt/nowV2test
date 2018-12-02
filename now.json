@@ -12,6 +12,6 @@
     "routes": [
         { "src": "/", "dest": "/front" },
         { "src": "/socket.io", "dest": "/back/server.js" },
-        { "src": "api/echo/(?<id>[^/]*)", "dest": "/api/echo.js?id=$id" }
+        { "src": "/api/echo/(?<id>[^/]*)", "dest": "/api/echo.js?id=$id" }
     ]
 }
