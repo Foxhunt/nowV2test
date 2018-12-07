@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>nowV2test peer</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/0.3.16/peer.min.js"></script>
+</head>
+
+<body>
+
+</body>
+<script>
+
+  const peer = new Peer({
+    host: location.hostname,
+    port: location.port || (location.protocol === 'https:' ? 443 : 80),
+    secure: true
+  })
+
+  peer.on("open", id => {
+    console.log(id)
+  })
+
+</script>
+
+</html>
