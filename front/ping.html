@@ -11,27 +11,28 @@
 
 <body>
     nowV2test
+    <button
+        onclick="sendRandom()">sendRandom</button>
 </body>
 <script>
     const socket = io()
 
     const body = document.getElementsByTagName("body")[0]
-    let lastDiv = null
+    const random = Math.random()
 
-    setInterval(() => {
-        socket.send(({ random, NOW_URL }) => {
+    const div = document.createElement("div")
+    div.innerText = random
+    body.appendChild(div)
 
-            console.log(`time: ${new Date().toLocaleTimeString()} ping: ${random} NOW_URL: ${NOW_URL}`)
+    function sendRandom() {
+        socket.send(random)
+    }
 
-            if (!(lastDiv && lastDiv.random === random)) {
-                const div = document.createElement("div")
-                div.random = random
-                div.innerText = `time: ${new Date().toLocaleTimeString()} ping: ${random} NOW_URL: ${NOW_URL}`
-                lastDiv = div
-                body.appendChild(div)
-            }
-        })
-    }, 1000)
+    socket.on("random", random => {
+        const div = document.createElement("div")
+        div.innerText = random
+        body.appendChild(div)
+    })
 </script>
 
 </html>

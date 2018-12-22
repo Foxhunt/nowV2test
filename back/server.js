@@ -1,12 +1,17 @@
 const server = require("http").createServer()
 const io = require("socket.io")(server, {serveClient: false})
 
-const random = Math.random()
-const NOW_URL = process.env.NOW_URL
+const REDIS_HOST = "nowv2testredis.now.sh"
+
+const redis = require('redis')
+const redisAdapter = require('socket.io-redis')
+const pub = redis.createClient(REDIS_HOST, { auth_pass: "StrongPassword!!!" })
+const sub = redis.createClient(REDIS_HOST, { auth_pass: "StrongPassword!!!" })
+io.adapter(redisAdapter({ pubClient: pub, subClient: sub }))
 
 io.on("connect", socket => {
-    socket.on("message", fn => {
-        fn({random, NOW_URL})
+    socket.on("message", random => {
+        socket.broadcast.emit("random", random)
     })
 })
 
