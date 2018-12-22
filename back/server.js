@@ -1,8 +1,4 @@
-const server = require("http").createServer(
-    (req, res) => {
-        res.end("Hello from a vanilla server!")
-    }
-  )
+const server = require("http").createServer()
 const io = require("socket.io")(server, {serveClient: false})
 
 const random = Math.random()
