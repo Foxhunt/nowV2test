@@ -5,12 +5,12 @@
     "regions": ["all"],
     "public": true,
     "builds": [
-        { "src": "front/*", "use": "@now/static" },
+        { "src": "package.json", "use": "@now/next" },
         { "src": "back/*", "use": "@now/node-server" },
         { "src": "api/*", "use": "@now/node" }
     ],
     "routes": [
-        { "src": "/", "dest": "/front" },
+        { "src": "/", "dest": "/pages" },
         { "src": "/socket.io/", "dest": "/back/server.js" },
         { "src": "/api/echo/(?<id>[^/]*)", "dest": "/api/echo.js?id=$id" }
     ]
