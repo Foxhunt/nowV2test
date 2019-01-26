@@ -6,8 +6,8 @@
     "public": true,
     "builds": [
         { "src": "package.json", "use": "@now/next" },
-        { "src": "back/*", "use": "@now/node-server" },
-        { "src": "api/*", "use": "@now/node" }
+        { "src": "./back/**/*.ts", "use": "@now/node-server" },
+        { "src": "./api/**/*.ts", "use": "@now/node" }
     ],
     "routes": [
         { "src": "/", "dest": "/pages" },

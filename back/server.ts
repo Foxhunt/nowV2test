@@ -1,5 +1,8 @@
-const server = require("http").createServer()
-const io = require("socket.io")(server, {serveClient: false})
+import http from "http"
+import socketIo from "socket.io"
+
+const server = http.createServer()
+const io = socketIo(server, {serveClient: false})
 
 const random = Math.random()
 const NOW_URL = process.env.NOW_URL
