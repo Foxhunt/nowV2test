@@ -3,14 +3,19 @@ import io from "socket.io-client"
 
 const socket = io()
 
-function Ping({ data }){
+type pingData = {
+    number: number
+    time: string
+}
+
+function Ping({ data }: { data: pingData }){
     return <div>time: { data.time } ping: { data.number }</div>
 }
 
 export default () => {
-    const [pings, setPings] = useState([])
+    const [pings, setPings] = useState<pingData[]>([])
     useEffect(() => {
-        socket.on("message", ({random, NOW_URL}) => {
+        socket.on("message", ({random, NOW_URL}: {random: number, NOW_URL: string}) => {
             console.log(`time: ${new Date().toLocaleTimeString()} ping: ${random} NOW_URL: ${NOW_URL}`)
             
             const numbers = pings.map(({ number }) => number)
