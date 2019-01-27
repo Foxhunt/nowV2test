@@ -6,12 +6,12 @@
     "public": true,
     "builds": [
         { "src": "./front/next.config.js", "use": "@now/next" },
-        { "src": "./back/service/**/*.ts", "use": "@now/node-server" },
-        { "src": "./back/api/**/*.ts", "use": "@now/node" }
+        { "src": "./back/service/**/*.ts", "use": "@now/node-server@canary" },
+        { "src": "./back/api/**/*.ts", "use": "@now/node@canary" }
     ],
     "routes": [
         { "src": "/", "dest": "front/pages" },
-        { "src": "/socket.io/", "dest": "/back/service/ping.js" },
-        { "src": "/api/echo/(?<id>[^/]*)", "dest": "back/api/echo.js?id=$id" }
+        { "src": "/socket.io/", "dest": "/back/service/ping.ts" },
+        { "src": "/api/echo/(?<id>[^/]*)", "dest": "back/api/echo.ts?id=$id" }
     ]
 }
