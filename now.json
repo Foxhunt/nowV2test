@@ -5,13 +5,13 @@
     "regions": ["all"],
     "public": true,
     "builds": [
-        { "src": "package.json", "use": "@now/next" },
-        { "src": "./back/**/*.ts", "use": "@now/node-server" },
-        { "src": "./api/**/*.ts", "use": "@now/node" }
+        { "src": "./front/next.config.js", "use": "@now/next" },
+        { "src": "./back/service/**/*.ts", "use": "@now/node-server" },
+        { "src": "./back/api/**/*.ts", "use": "@now/node" }
     ],
     "routes": [
-        { "src": "/", "dest": "/pages" },
-        { "src": "/socket.io/", "dest": "/back/server.js" },
-        { "src": "/api/echo/(?<id>[^/]*)", "dest": "/api/echo.js?id=$id" }
+        { "src": "/", "dest": "front/pages" },
+        { "src": "/socket.io/", "dest": "/back/service/ping.js" },
+        { "src": "/api/echo/(?<id>[^/]*)", "dest": "back/api/echo.js?id=$id" }
     ]
 }
