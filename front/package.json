@@ -11,6 +11,7 @@
     "socket.io-client": "^2.2.0"
   },
   "devDependencies": {
-    "@types/next": "^7.0.6"
+    "@types/next": "^7.0.6",
+    "@types/socket.io-client": "^1.4.32"
   }
 }
