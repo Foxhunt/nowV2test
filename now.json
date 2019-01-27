@@ -10,8 +10,8 @@
         { "src": "./back/api/**/*.ts", "use": "@now/node@canary" }
     ],
     "routes": [
-        { "src": "/", "dest": "front/pages" },
         { "src": "/socket.io/", "dest": "/back/service/ping.ts" },
-        { "src": "/api/echo/(?<id>[^/]*)", "dest": "back/api/echo.ts?id=$id" }
+        { "src": "/api/echo/(?<id>[^/]*)", "dest": "back/api/echo.ts?id=$id" },
+        { "src": "/(.*)", "dest": "/front/$1", "headers": { "x-request-path": "$1" }}
     ]
 }
