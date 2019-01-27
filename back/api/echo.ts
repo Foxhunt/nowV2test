@@ -1,5 +1,5 @@
 import { parse } from "url"
-import { IncomingMessage, ServerResponse } from "http";
+import { IncomingMessage, ServerResponse } from "http"
 
 export default (req: IncomingMessage, res: ServerResponse) => {
     const { query } = parse(req.url as string, true)
