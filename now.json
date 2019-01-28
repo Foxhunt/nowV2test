@@ -6,8 +6,8 @@
     "public": true,
     "builds": [
         { "src": "./front/next.config.js", "use": "@now/next" },
-        { "src": "./back/service/**/*.ts", "use": "@now/node-server@canary" },
-        { "src": "./back/api/**/*.ts", "use": "@now/node@canary" }
+        { "src": "./back/service/**/*.ts", "use": "@now/node-server@0.4.26-canary.7" },
+        { "src": "./back/api/**/*.ts", "use": "@now/node@0.4.28-canary.6" }
     ],
     "routes": [
         { "src": "/socket.io/", "dest": "/back/service/ping.ts" },
